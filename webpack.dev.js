@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 var DIST_DIR = path.resolve(__dirname, "dist");
 var SRC_DIR = path.resolve(__dirname, "src");
+const Fiber = require("fibers");
 const VENDOR_LIBS = [
   "react",
   "react-dom",
@@ -14,12 +15,14 @@ const VENDOR_LIBS = [
   "redux-thunk",
   "react-redux"
 ];
+
 const devServer = {
   port: 4200,
-  open: true
+  open: true,
+  historyApiFallback: true
 };
 const config = {
-  mode: "none",
+  mode: "development",
   entry: {
     bundle: SRC_DIR + "/app/index.js",
     vendor: VENDOR_LIBS
@@ -36,12 +39,29 @@ const config = {
         exclude: /node_modules/,
         test: /\.js$/
       },
+      //  css
       {
-        use: ExtractTextPlugin.extract({
-          use: ["sass-loader", "css-loader"],
-          fallback: "style-loader"
-        }),
-        test: /\.scss$/
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      // scss
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass"),
+              fiber: Fiber
+            }
+          }
+        ]
       },
       {
         use: "file-loader",

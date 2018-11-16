@@ -1,0 +1,63 @@
+$DEEP-ORANGE: #e84118;
+$ONEDARD: #2f3640;
+.main {
+  .get-back {
+    a {
+      font-size: 50px;
+      padding: 10px;
+      color: $ONEDARD;
+      &:hover {
+        color: white;
+      }
+    }
+    float: left;
+  }
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: $DEEP-ORANGE;
+  .search {
+    &-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #2f3640;
+      border-radius: 40px;
+      padding: 10px;
+      &:hover {
+        .search-txt {
+          width: 340px;
+          padding: 0 6px;
+        }
+        .search-btn {
+          background: white;
+        }
+      }
+    }
+    &-btn {
+      color: $DEEP-ORANGE;
+      float: right;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: $ONEDARD;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-txt {
+      border: none;
+      background: none;
+      outline: none;
+      float: left;
+      padding: 0;
+      color: white;
+      font-size: 16px;
+      transition: 0.4s;
+      line-height: 40px;
+      width: 0px;
+    }
+  }
+}

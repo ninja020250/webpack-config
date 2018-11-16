@@ -1,0 +1,40 @@
+@import "./SearchBox";
+
+$BLACK: #444;
+$BACK-BLUR: #aaa;
+
+.content {
+  max-width: 800px;
+  margin: auto;
+  padding: 16px 32px;
+}
+.app {
+  .group-button {
+    text-align: center;
+  }
+  h1 {
+    padding-bottom: 5px;
+  }
+  &-title {
+    padding: 2em;
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    color: $BLACK;
+  }
+  &-items {
+    h3 {
+      color: $BACK-BLUR;
+    }
+    width: 100%/4;
+    padding: 8px;
+    a {
+      display: block;
+      color: #f27173 !important;
+      text-underline-position: none;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      font-weight: bold;
+    }
+  }
+}
