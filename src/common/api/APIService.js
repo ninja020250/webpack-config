@@ -4,16 +4,16 @@ import axios from "axios";
 const host = "http://localhost:4200";
 const token = "none";
 export class APIService {
-  get = url => {
+  static get = url => {
     return callAPI(url, "GET");
   };
-  deleteMethod(url) {
+  static deleteMethod(url) {
     return callAPI(url, "DELETE");
   }
-  put(url, data) {
+  static put(url, data) {
     return callAPI(url, "PUT");
   }
-  post(url, data = {}) {
+  static post(url, data = {}) {
     const sampleData = {
       sku: 1,
       title: "new",
