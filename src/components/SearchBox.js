@@ -15,8 +15,6 @@ class SearchBox extends Component {
           <input
             className="search-txt"
             type="text"
-            name=""
-            value=""
             placeholder="type something"
           />
           <a className="search-btn">

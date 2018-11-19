@@ -1,0 +1,75 @@
+.main-social {
+  width: 100%;
+  height: 100%;
+  .get-back {
+    a {
+      top: 5%;
+      width: 90px;
+      height: 90px;
+      background: #f1f1f1;
+      border-radius: 30%;
+      //  box-shadow: 0 5px 15px -5px #00000070;
+      padding: 10px;
+      color: #3498db;
+    }
+  }
+}
+.middle {
+  @include middlePage();
+  .btn {
+    float: left;
+    width: 90px;
+    height: 90px;
+    background: #f1f1f1;
+    margin: 10px;
+    border-radius: 30%;
+    box-shadow: 0 5px 15px -5px #00000070;
+    color: #3498db;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background: #3498db;
+      transform: rotate(45deg);
+      left: -110%;
+      top: 90%;
+    }
+    &:hover {
+      &::before {
+        animation: aaa 0.7s 1;
+        top: -10%;
+        left: -10%;
+      }
+
+      i {
+        transform: scale(1.3);
+        color: white;
+      }
+    }
+    i {
+      font-size: 26px;
+      transition: 0.2s linear;
+    }
+  }
+}
+
+@keyframes aaa {
+  0% {
+    left: -110%;
+    top: 90%;
+  }
+  50% {
+    left: 10%;
+    top: -30%;
+  }
+  100% {
+    top: -10%;
+    left: -10%;
+  }
+}

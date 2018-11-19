@@ -1,5 +1,6 @@
+@import "./mixin";
 @import "./SearchBox";
-
+@import "./socialButton.scss";
 $BLACK: #444;
 $BACK-BLUR: #aaa;
 
@@ -23,10 +24,11 @@ $BACK-BLUR: #aaa;
     color: $BLACK;
   }
   &-items {
+    float: left;
     h3 {
       color: $BACK-BLUR;
     }
-    width: 100%/4;
+    width: 25%;
     padding: 8px;
     a {
       display: block;

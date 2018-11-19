@@ -1,5 +1,6 @@
 $DEEP-ORANGE: #e84118;
 $ONEDARD: #2f3640;
+
 .main {
   .get-back {
     a {
@@ -37,7 +38,7 @@ $ONEDARD: #2f3640;
       }
     }
     &-btn {
-      color: $DEEP-ORANGE;
+      color: $DEEP-ORANGE !important;
       float: right;
       width: 40px;
       height: 40px;
