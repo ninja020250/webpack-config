@@ -3,8 +3,9 @@ const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-var DIST_DIR = path.resolve(__dirname, "dist");
-var SRC_DIR = path.resolve(__dirname, "src");
+var DIST_DIR = path.resolve(__dirname, "../dist/");
+var SRC_DIR = path.resolve(__dirname, "../src/");
+const Fiber = require("fibers");
 const VENDOR_LIBS = [
   "react",
   "react-dom",
@@ -14,12 +15,8 @@ const VENDOR_LIBS = [
   "redux-thunk",
   "react-redux"
 ];
-const devServer = {
-  port: 4200,
-  open: true
-};
+
 const config = {
-  mode: "none",
   entry: {
     bundle: SRC_DIR + "/app/index.js",
     vendor: VENDOR_LIBS
@@ -31,17 +28,38 @@ const config = {
   },
   module: {
     rules: [
+      // es6 loader
       {
         use: "babel-loader",
         exclude: /node_modules/,
         test: /\.js$/
       },
+      // css loader
       {
         use: ExtractTextPlugin.extract({
           use: "css-loader",
           fallback: "style-loader"
         }),
         test: /\.css$/
+      },
+      // scss loader
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass"),
+              fiber: Fiber
+            }
+          }
+        ]
       },
       {
         use: "file-loader",
@@ -61,7 +79,6 @@ const config = {
       }
     }
   },
-  devServer,
   plugins: [
     new ExtractTextPlugin("style.css"),
     new HtmlWebpackPlugin({

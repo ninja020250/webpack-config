@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack-dev-server"
+    "build": "webpack --config config/webpack.prod.js",
+    "dev": "webpack-dev-server --config config/webpack.dev.js",
+    "prod": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -18,12 +19,15 @@
     "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-alpha.0",
+    "fibers": "^3.0.0",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "react": "^16.3.1",
