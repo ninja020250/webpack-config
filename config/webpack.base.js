@@ -36,11 +36,13 @@ const config = {
       },
       // css loader
       {
-        use: ExtractTextPlugin.extract({
-          use: "css-loader",
-          fallback: "style-loader"
-        }),
-        test: /\.css$/
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+        // use: ExtractTextPlugin.extract({
+        //   use: "css-loader",
+        //   fallback: "style-loader"
+        // }),
+    
       },
       // scss loader
       {
@@ -80,7 +82,6 @@ const config = {
     }
   },
   plugins: [
-    new ExtractTextPlugin("style.css"),
     new HtmlWebpackPlugin({
       template: "src/index.html",
       title: "my toys"
