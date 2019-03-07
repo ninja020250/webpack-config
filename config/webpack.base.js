@@ -36,13 +36,10 @@ const config = {
       },
       // css loader
       {
-        use: ExtractTextPlugin.extract({
-          use: "css-loader",
-          fallback: "style-loader"
-        }),
-        test: /\.css$/
-      },
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       // scss loader
+    },
       {
         test: /\.scss$/,
         use: [
@@ -80,7 +77,6 @@ const config = {
     }
   },
   plugins: [
-    new ExtractTextPlugin("style.css"),
     new HtmlWebpackPlugin({
       template: "src/index.html",
       title: "my toys"
